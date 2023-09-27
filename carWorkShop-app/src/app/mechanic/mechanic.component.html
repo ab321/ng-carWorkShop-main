@@ -1,3 +1,14 @@
-<p>{{lastName}}, {{firstName}} (hired {{hired.toLocaleDateString()}}, {{getYearsSinceHired()}} years)</p>
-<p>{{lastName}}, {{firstName}} (hired {{hired.toLocaleDateString()}}, {{getYearsSinceHired()}} years)</p>
-<p>{{lastName}}, {{firstName}} (hired {{hired.toLocaleDateString()}}, {{getYearsSinceHired()}} years)</p>
+
+Meet Mr . {{ lastName }}.
+<div *ngIf="showDetails" >
+ It is {{ firstName }} , {{ firstName }} {{ lastName }}.
+ On this ship since {{ hired.toLocaleDateString() }}.
+</div>
+<hr>
+
+Here are some Japanese car brands :
+<ul >
+<li *ngFor="let cb of japCarBrands" >
+{{cb}} (Jap)
+</li>
+</ul>

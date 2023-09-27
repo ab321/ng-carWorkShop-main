@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./mechanic.component.css']
 })
 export class MechanicComponent {
+
+    showDetails: boolean = false;
+    japCarBrands = ["Toyota", "Mazda", "Subaru"];
+
     firstName = 'John';
     lastName = 'Doe';
     hired: Date = new Date('01/01/2020');
