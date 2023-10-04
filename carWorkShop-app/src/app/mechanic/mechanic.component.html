@@ -1,14 +1,12 @@
+<div> {{mechanic.lastName}}, {{mechanic.firstName}} (hired {{mechanic.hireDate.toLocaleDateString()}}), {{getYearsSinceHired()}}
 
-Meet Mr . {{ lastName }}.
-<div *ngIf="showDetails" >
- It is {{ firstName }} , {{ firstName }} {{ lastName }}.
- On this ship since {{ hired.toLocaleDateString() }}.
+    <button *ngIf="editMode && !doEdit" (click)="doEdit=true">Edit</button>
+    <button *ngIf="editMode && doEdit" (click)="doEdit=false">Done</button>
+
 </div>
-<hr>
 
-Here are some Japanese car brands :
-<ul >
-<li *ngFor="let cb of japCarBrands" >
-{{cb}} (Jap)
-</li>
-</ul>
+<div *ngIf="editMode && doEdit">
+    <input type="text" [(ngModel)]="mechanic.firstName" />
+    <input type="text" [(ngModel)]="mechanic.lastName" />
+    <input type="date" [valueAsDate]="mechanic.hireDate" (input)="mechanic.hireDate=parseDate($event)"/>
+</div>
