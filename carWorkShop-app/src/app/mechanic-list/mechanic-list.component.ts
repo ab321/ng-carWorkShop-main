@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Mechanic } from '../shared/mechanic-model';
+import { MechanicRepositoryService } from '../mechanic-repository.service';
 
 @Component({
   selector: 'app-mechanic-list',
@@ -8,21 +9,25 @@ import { Mechanic } from '../shared/mechanic-model';
 })
 export class MechanicListComponent {
 
-  mechanics: Mechanic[] = [
-    {
-      "lastName": "Doe",
-      "firstName": "John",
-      "hireDate": new Date('2020-01-01')
-    },
-    {
-      "lastName": "Doe",
-      "firstName": "John",
-      "hireDate": new Date('2020-01-01')
-    },
-    {
-      "lastName": "Doe",
-      "firstName": "John",
-      "hireDate": new Date('2020-01-01')
-    }
-  ]
+
+  constructor(public mechanicRepository: MechanicRepositoryService) {}
+
+  
+
+  newMechanic: Mechanic = {"lastName": "", "firstName": "", "hireDate": new Date(Date.now())};
+  doEdit: boolean = false;
+
+  onNew(){
+    this.newMechanic = new Mechanic();
+    this.doEdit = true;
+  }
+
+  onDelete(i: number){
+    this.mechanicRepository.mechanics.splice(i, 1);
+  }
+
+  onDoneEvent(){
+    this.doEdit = false;
+    this.mechanicRepository.mechanics.push(this.newMechanic);
+  }
 }

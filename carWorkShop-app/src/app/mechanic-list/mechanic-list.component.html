@@ -1,3 +1,14 @@
-<div *ngFor="let mechanic of mechanics">
-    <app-mechanic [mechanic]="mechanic" [editMode]="true"> </app-mechanic>
+<button class="btn btn-primary" (click)="onNew()">New</button>
+<div *ngIf="doEdit">
+    <app-mechanic (doneEvent)="onDoneEvent()" [mechanic]="newMechanic" [editMode]="true" [doEdit]="true"> </app-mechanic>
 </div>
+
+<div *ngFor="let mech of mechanicRepository.mechanics; let i = index">
+<table>
+    <tbody>
+        <tr>
+            <td><button class="btn btn-danger" (click)="onDelete(i)">Delete</button></td>
+            <td><app-mechanic [mechanic]="mech" [editMode]="true" ></app-mechanic> </td>
+        </tr>
+    </tbody>
+</table>

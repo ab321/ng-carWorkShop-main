@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Mechanic } from '../shared/mechanic-model';
 
 @Component({
@@ -8,8 +8,9 @@ import { Mechanic } from '../shared/mechanic-model';
 })
 export class MechanicComponent {
     @Input() editMode: boolean = false;
-    doEdit: boolean = false;
+    @Input() doEdit: boolean = false;
     @Input() mechanic: Mechanic = new Mechanic();
+    @Output() doneEvent = new EventEmitter();
 
     getYearsSinceHired(): number{
       const today = new Date();
@@ -25,5 +26,10 @@ export class MechanicComponent {
       }
 
       return new Date();
+    }
+
+    done(){
+      this.doEdit = false;
+      this.doneEvent.emit();
     }
 }

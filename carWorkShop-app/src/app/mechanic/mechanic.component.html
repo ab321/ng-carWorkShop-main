@@ -1,7 +1,7 @@
 <div> {{mechanic.lastName}}, {{mechanic.firstName}} (hired {{mechanic.hireDate.toLocaleDateString()}}), {{getYearsSinceHired()}}
 
-    <button *ngIf="editMode && !doEdit" (click)="doEdit=true">Edit</button>
-    <button *ngIf="editMode && doEdit" (click)="doEdit=false">Done</button>
+    <button class="btn-primary" *ngIf="editMode && !doEdit" (click)="doEdit=true">Edit</button>
+    <button class="btn-primary" *ngIf="editMode && doEdit" (click)="done()">Done</button>
 
 </div>
 
