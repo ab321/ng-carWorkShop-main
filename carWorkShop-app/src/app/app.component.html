@@ -1,7 +1,15 @@
 <h1>The Car Work Shop</h1>
-<h2>Mechanics</h2>
+<ul class="nav nav-tabs">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Overview</a></li>
+    <li routerLinkActive="active"><a routerLink="mechanics">Mechanics</a></li>
+</ul>
 
-<app-mechanic-list></app-mechanic-list>
+<router-outlet></router-outlet>
+
+
 <hr>
 
-<app-datastatus></app-datastatus>
+
+
+
+

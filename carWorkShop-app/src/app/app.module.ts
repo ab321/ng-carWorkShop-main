@@ -6,17 +6,27 @@ import { MechanicComponent } from './mechanic/mechanic.component';
 import { FormsModule } from '@angular/forms';
 import { MechanicListComponent } from './mechanic-list/mechanic-list.component';
 import { DatastatusComponent } from './datastatus/datastatus.component';
+import { OverviewComponent } from './overview/overview.component';
+import { RouterModule, Routes, RouterOutlet } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: 'overview', pathMatch: 'full'},
+  { path: 'overview', component: OverviewComponent },
+  { path: 'mechanics', component: MechanicListComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     MechanicComponent,
     MechanicListComponent,
-    DatastatusComponent
+    DatastatusComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
