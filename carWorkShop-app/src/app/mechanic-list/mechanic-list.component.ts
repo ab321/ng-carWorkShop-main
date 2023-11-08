@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Mechanic } from '../shared/mechanic-model';
-import { MechanicRepositoryService } from '../mechanic-repository.service';
+import { MechanicRepositoryService } from '../shared/mechanic-repository.service';
 
 @Component({
   selector: 'app-mechanic-list',
@@ -8,11 +8,8 @@ import { MechanicRepositoryService } from '../mechanic-repository.service';
   styleUrls: ['./mechanic-list.component.css']
 })
 export class MechanicListComponent {
-
-
-  constructor(public mechanicRepository: MechanicRepositoryService) {}
-
   
+  constructor(public mechanicRepository: MechanicRepositoryService) {}
 
   newMechanic: Mechanic = {"lastName": "", "firstName": "", "hireDate": new Date(Date.now())};
   doEdit: boolean = false;

@@ -8,6 +8,7 @@ import { MechanicListComponent } from './mechanic-list/mechanic-list.component';
 import { DatastatusComponent } from './datastatus/datastatus.component';
 import { OverviewComponent } from './overview/overview.component';
 import { RouterModule, Routes, RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'overview', pathMatch: 'full'},
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
     OverviewComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)

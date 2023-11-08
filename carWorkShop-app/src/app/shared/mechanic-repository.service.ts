@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Mechanic } from './shared/mechanic-model';
+import { Mechanic } from './mechanic-model';
+import { CarShopWebApiService } from './car-shop-web-api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,21 @@ export class MechanicRepositoryService {
       "hireDate": new Date('2020-01-01')
     }
   ];
+
+  constructor(private apiClient: CarShopWebApiService) { 
+    this.apiClient.getAllMechanics()
+    .subscribe({
+      next: (mechs) => {
+        mechs.forEach(m => {
+          m.hireDate = new Date(
+            (m.hireDate as unknown) as string);
+        });
+        this.mechanics = mechs;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    })
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MechanicRepositoryService } from '../mechanic-repository.service';
+import { MechanicRepositoryService } from '../shared/mechanic-repository.service';
 
 @Component({
   selector: 'app-datastatus',
